@@ -2,7 +2,7 @@ const mongodb = require("../db/connect");
 const client = require("mongodb").ObjectId;
 
 const viewAllCartItems = async (req, res, next) => {
-  const result = await mongodb.getDb().db("shopping").collection("contacts").find();
+  const result = await mongodb.getDb().db("shopping_list").collection("list_data").find();
   result.toArray().then((lists) => {
     res.status(200).json(lists);
   });
@@ -10,13 +10,15 @@ const viewAllCartItems = async (req, res, next) => {
 
 const addCartItem = async (req, res) => {
   const contact = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    favoriteColor: req.body.favoriteColor,
-    birthday: req.body.birthday,
+    name: req.body.name,
+    price: req.body.price,
+    unit: req.body.unit,
+    quantity: req.body.quantity,
+    category: req.body.category,
+    store: req.body.store,
+    notes: req.body.notes,
   };
-  const response = await mongodb.getDb().db("sample_data").collection("contacts").insertOne(contact);
+  const response = await mongodb.getDb().db("shopping_list").collection("list_data").insertOne(contact);
   if (response.acknowledged) {
     res.status(201).json(response);
   } else {

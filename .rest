@@ -1,0 +1,13 @@
+### Create new list item
+POST http://localhost:8080/cart HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Ketchup",
+    "price": "$2.99",
+    "unit": "each",
+    "quantity": "1",
+    "category": "food",
+    "store": "Walmart",
+    "notes": "Get best quality",
+}

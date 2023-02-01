@@ -9,5 +9,8 @@ content-type: application/json
     "quantity": "1",
     "category": "food",
     "store": "Walmart",
-    "notes": "Get best quality",
+    "notes": "Get best quality"
 }
+
+### Get all list items
+GET http://localhost:8080/cart HTTP/1.1

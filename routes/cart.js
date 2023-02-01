@@ -3,8 +3,8 @@ const router = express.Router();
 
 const contactsController = require("../controllers");
 
-router.get("/", contactsController.viewAllCartItems);
+router.get("/", contactsController.viewAllListItems);
 
-router.post("/", contactsController.addCartItem);
+router.post("/", contactsController.addListItem);
 
 module.exports = router;

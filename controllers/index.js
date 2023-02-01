@@ -1,14 +1,14 @@
 const mongodb = require("../db/connect");
 const client = require("mongodb").ObjectId;
 
-const viewAllCartItems = async (req, res, next) => {
+const viewAllListItems = async (req, res, next) => {
   const result = await mongodb.getDb().db("shopping_list").collection("list_data").find();
   result.toArray().then((lists) => {
     res.status(200).json(lists);
   });
 };
 
-const addCartItem = async (req, res) => {
+const addListItem = async (req, res) => {
   const contact = {
     name: req.body.name,
     price: req.body.price,
@@ -27,6 +27,6 @@ const addCartItem = async (req, res) => {
 };
 
 module.exports = {
-  viewAllCartItems,
-  addCartItem,
+  viewAllListItems,
+  addListItem,
 };

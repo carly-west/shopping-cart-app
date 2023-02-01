@@ -1,5 +1,5 @@
 ### Create new list item
-POST http://localhost:8080/cart HTTP/1.1
+POST http://localhost:8080/shopping-list HTTP/1.1
 content-type: application/json
 
 {
@@ -13,4 +13,4 @@ content-type: application/json
 }
 
 ### Get all list items
-GET http://localhost:8080/cart HTTP/1.1
+GET http://localhost:8080/shopping-list HTTP/1.1

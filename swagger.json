@@ -5,10 +5,10 @@
     "description": "Description",
     "version": "1.0.0"
   },
-  "host": "shopping-list-lii6.onrender.com",
+  "host": "localhost:8080",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/api-docs": {
@@ -18,7 +18,7 @@
         "responses": {}
       }
     },
-    "/cart/": {
+    "/shopping-list/": {
       "get": {
         "description": "",
         "parameters": [],

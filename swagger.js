@@ -5,7 +5,7 @@ const doc = {
     title: "My API",
     description: "Description",
   },
-  host: "https://shopping-list-53vr.onrender.com",
+  host: "shopping-list-53vr.onrender.com",
   schemes: ["https"],
 };
 

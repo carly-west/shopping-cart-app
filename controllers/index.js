@@ -4,7 +4,7 @@ const valid = require('../helper');
 
 const viewAllListItems = async (req, res, next) => {
   try {
-    const result = await mongodb.getDb().db('shopping_list').collection().find();
+    const result = await mongodb.getDb().db('shopping_list').collection('list_data').find();
     result.toArray().then((lists) => {
       res.status(200).json(lists);
     });
@@ -77,13 +77,13 @@ const deleteListItem = async (req, res, next) => {
     const userId = new client(req.params.id);
 
     const response = await mongodb.getDb().db('shopping_list').collection('list_data').deleteOne({ _id: userId });
-    if (response.modifiedCount > 0) {
+    if (response.deletedCount > 0) {
       res.status(204).send('Status: 204 OK');
     } else {
-      res.status(500).json('Some error occurred while updating the item.');
+      res.status(500).json('asdfSome error occurred while deleting the item.');
     }
   } catch (error) {
-    res.status(500).json(error.message || 'Some error occurred updating creating the item.');
+    res.status(500).json(error.message);
   }
 };
 

@@ -1,8 +1,9 @@
 ### Create new list item
-POST https://shopping-list-53vr.onrender.com/shopping-list HTTP/1.1
+POST http://localhost:8080/shopping-list HTTP/1.1
 content-type: application/json
 
 {
+    "userId": "1",
     "name": "Ketchup",
     "price": "$2.99",
     "unit": "each",
@@ -14,3 +15,21 @@ content-type: application/json
 
 ### Get all list items
 GET https://shopping-list-53vr.onrender.com/shopping-list HTTP/1.1
+
+### Edit contact
+PUT http://localhost:8080/shopping-list/63d9ed0311f7bbc2d52b1ff1 HTTP/1.1
+content-type: application/json
+
+{
+    "userId": "100",
+    "name": "Ketchup",
+    "price": "$2.99",
+    "unit": "each",
+    "quantity": "1",
+    "category": "food",
+    "store": "Walmart",
+    "notes": "Get best quality"
+}
+
+### Delete contact
+DELETE http://localhost:8080/shopping-list/63e528ddfd33e5d4ae9f3c0a HTTP/1.1

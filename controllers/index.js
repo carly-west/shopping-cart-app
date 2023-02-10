@@ -57,7 +57,8 @@ const updateListItem = async (req, res, next) => {
     const valid_response = valid.validateItem(item);
     if (valid_response.error) {
       res.status(422).json(valid_response.error.message);
-      return;
+      // return;
+      throw ValidationError('Validation error');
     }
 
     const response = await mongodb.getDb().db('shopping_list').collection('list_data').replaceOne({ _id: userId }, item);

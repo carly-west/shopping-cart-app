@@ -4,7 +4,7 @@ const valid = require('../helper');
 
 const viewAllListItems = async (req, res, next) => {
   try {
-    const result = await mongodb.getDb().db('shopping_list').collection('list_data').find();
+    const result = await mongodb.getDb().db('shopping_list').collection().find();
     result.toArray().then((lists) => {
       res.status(200).json(lists);
     });
@@ -64,9 +64,11 @@ const updateListItem = async (req, res, next) => {
     console.log(response);
     if (response.modifiedCount > 0) {
       res.status(204).send('Status: 204 OK');
+    } else {
+      res.status(500).json('Some error occurred while updating the item.');
     }
   } catch (error) {
-    res.status(500).json(error.message || 'Some error occurred while creating the contact.');
+    res.status(500).json(error.message || 'Some error occurred updating creating the item.');
   }
 };
 
@@ -74,11 +76,14 @@ const deleteListItem = async (req, res, next) => {
   try {
     const userId = new client(req.params.id);
 
-    await mongodb.getDb().db('shopping_list').collection('list_data').deleteOne({ _id: userId });
-
-    res.status(200).send('Status: 200 OK');
+    const response = await mongodb.getDb().db('shopping_list').collection('list_data').deleteOne({ _id: userId });
+    if (response.modifiedCount > 0) {
+      res.status(204).send('Status: 204 OK');
+    } else {
+      res.status(500).json('Some error occurred while updating the item.');
+    }
   } catch (error) {
-    res.status(500).json(error.message || 'Some error occurred while deleting the item.');
+    res.status(500).json(error.message || 'Some error occurred updating creating the item.');
   }
 };
 

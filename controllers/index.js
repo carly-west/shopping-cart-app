@@ -2,6 +2,44 @@ const mongodb = require('../db/connect');
 const client = require('mongodb').ObjectId;
 const valid = require('../helper');
 
+const addUser = async (req, res) => {
+  try {
+    const item = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      userId: req.body.userId,
+    };
+
+    const valid_response = valid.validateUser(item);
+    if (valid_response.error) {
+      res.status(422).json(valid_response.error.message);
+      return;
+    }
+    const response = await mongodb.getDb().db('shopping_list').collection('user_data').insertOne(item);
+    if (response.acknowledged) {
+      res.status(201).json(response);
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+const deleteUser = async (req, res, next) => {
+  try {
+    const userId = new client(req.params.id);
+
+    const response = await mongodb.getDb().db('shopping_list').collection('user_data').deleteOne({ _id: userId });
+    if (response.deletedCount > 0) {
+      res.status(204).send('Status: 204 OK');
+    } else {
+      res.status(500).json('asdfSome error occurred while deleting the item.');
+    }
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
 const viewAllListItems = async (req, res, next) => {
   try {
     const result = await mongodb.getDb().db('shopping_list').collection('list_data').find();
@@ -92,4 +130,6 @@ module.exports = {
   addListItem,
   updateListItem,
   deleteListItem,
+  addUser,
+  deleteUser,
 };

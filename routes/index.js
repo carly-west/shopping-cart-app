@@ -7,6 +7,7 @@ router.use('/api-docs', swaggerUi.serve);
 router.get('/api-docs', swaggerUi.setup(swaggerDocument));
 
 router.use('/shopping-list', require('./shopping-list'));
+router.use('/user-management', require('./user-management'));
 
 // Handling errors
 // app.use((err, req, res, next) => {

@@ -16,6 +16,19 @@ function validateItem(item) {
   return JoiSchema.validate(item);
 }
 
+function validateUser(item) {
+  const JoiSchema = Joi.object({
+    firstName: Joi.string().required(),
+    lastName: Joi.string().required(),
+    email: Joi.string().required(),
+    unit: Joi.string().required(),
+    userId: Joi.string().required(),
+  }).options({ abortEarly: false });
+
+  return JoiSchema.validate(item);
+}
+
 module.exports = {
   validateItem,
+  validateUser,
 };

@@ -21,7 +21,6 @@ function validateUser(item) {
     firstName: Joi.string().required(),
     lastName: Joi.string().required(),
     email: Joi.string().required(),
-    unit: Joi.string().required(),
     userId: Joi.string().required(),
   }).options({ abortEarly: false });
 

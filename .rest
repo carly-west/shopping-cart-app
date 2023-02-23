@@ -36,3 +36,36 @@ content-type: application/json
 
 ### Delete contact
 DELETE http://localhost:8080/shopping-list/63e528ddfd33e5d4ae9f3c0a HTTP/1.1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+  "userId": "2",
+  "name": "Banana",
+  "price": "2",
+  "unit": "lbs",
+  "quantity": "2",
+  "category": "food",
+  "store": "Walmart",
+  "notes": "Get fresh!"
+}
+
+
+{
+  "firstName": "Leo",
+  "lastName": "Correa",
+  "email": "leo.correa@gmail.com",
+  "userId": "3"
+}

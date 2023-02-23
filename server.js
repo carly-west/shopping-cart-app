@@ -10,7 +10,7 @@ const config = {
   authRequired: false,
   auth0Logout: true,
   secret: 'a long, randomly-generated string stored in env',
-  baseURL: 'http://localhost:8080',
+  baseURL: 'https://shopping-list-53vr.onrender.com',
   clientID: 'dIig4BU5sc1YaUY1srd5YnzMZvgng9Rn',
   issuerBaseURL: 'https://dev-b0rkht1ryuza4xk6.us.auth0.com',
 };
